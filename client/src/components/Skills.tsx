@@ -66,16 +66,17 @@ export default function Skills() {
       ],
     },
     {
-      category: "Developer Tools",
+      category: "Cloud & MLOps",
       icon: <FaTools />,
       items: [
-        { name: "Git", icon: <FaGitAlt className="text-orange-600" /> },
+        { name: "Azure AI Foundry", icon: <FaCode className="text-blue-600" /> },
+        { name: "Databricks", icon: <FaDatabase className="text-orange-600" /> },
         { name: "Docker", icon: <FaDocker className="text-blue-500" /> },
+        { name: "Git", icon: <FaGitAlt className="text-orange-600" /> },
         { name: "Google Colab", icon: <SiGooglecolab className="text-yellow-500" /> },
         { name: "Firebase", icon: <SiFirebase className="text-yellow-500" /> },
-        { name: "Supabase", icon: <SiSupabase className="text-green-500" /> },
-        { name: "VS Code", icon: <FaCode className="text-blue-500" /> },
         { name: "Jupyter", icon: <SiJupyter className="text-orange-500" /> },
+        { name: "PowerShell", icon: <FaCode className="text-blue-400" /> },
       ],
     },
     {

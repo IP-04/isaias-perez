@@ -61,7 +61,7 @@ export default function Hero() {
               AI Engineer & Machine Learning Researcher
             </h2>
             <p className="text-lg md:text-xl mb-8 max-w-xl text-gray-300">
-              Building intelligent systems with LLMs and reinforcement learning. Currently conducting research on AI interpretability at CU Boulder while engineering automated solutions at Polylabs.
+              Building and deploying end-to-end AI pipelines on Azure AI Foundry to power fan-engagement, security automation, and AI prototypes. Currently at Kroenke Sports & Entertainment while conducting ML research at CU Boulder.
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
               <Button

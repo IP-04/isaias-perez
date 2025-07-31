@@ -6,9 +6,25 @@ import { Badge } from "@/components/ui/badge";
 export default function Experience() {
   const experiences = [
     {
+      title: "AI Specialist Intern",
+      company: "Kroenke Sports & Entertainment",
+      period: "July 2025 – Present",
+      icon: <SiOpenai />,
+      logo: "/assets/kse_logo.jpg",
+      responsibilities: [
+        "Building and deploying end-to-end AI pipelines on Azure AI Foundry to power fan-engagement, security policy automation, and cross-team AI prototypes",
+        "Deploy, govern and accelerate inference of LLMs and other models on Azure AI Foundry with scalable vector embeddings for recommendation features",
+        "Research and implement prompt-engineering and fine-tuning workflows for internal AI copilots and live FAQ/chatbot systems",
+        "Audit and optimize Panorama network-security logs with AI-driven policy analysis using Databricks + Copilot, reducing policy-review time through automated summaries",
+        "Prototype generative-AI features for fan engagement, in-stadium experiences and ticket upsell recommendation engines",
+      ],
+      tags: ["Azure AI Foundry", "LLM Deployment", "Databricks", "Prompt Engineering", "MLOps", "PyTorch", "Vector Embeddings"],
+      isRemote: false,
+    },
+    {
       title: "AI Engineer Intern",
       company: "Polylabs",
-      period: "June 2025 – Present",
+      period: "June 2025 – July 2025",
       icon: <FaRobot />,
       logo: null,
       responsibilities: [

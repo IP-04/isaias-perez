@@ -1,0 +1,46 @@
+Okay new changes, I need you to update my the portafolio website again with my new job is KSE, review this info once again and all the work I have do so far and provide me a summary/ list of everything I should display in my website realted to this new job
+
+1. **New Role Header**
+   – Title: AI Specialist Intern
+   – Company: Kroenke Sports & Entertainment
+   – Dates: July 2025 – Present
+
+2. **Elevator-Pitch Summary**
+   A one-sentence overview, e.g.:
+   “Building and deploying end-to-end AI pipelines on Azure AI Foundry to power fan-engagement, security policy automation, and cross-team AI prototypes at KSE.”
+
+3. **Key Responsibilities**
+
+   * Deploy, govern and accelerate inference of LLMs and other models on Azure AI Foundry
+   * Research and implement prompt-engineering and fine-tuning workflows for internal AI copilots
+   * Audit and optimize Panorama network-security logs with AI-driven policy analysis (Databricks + Copilot)
+   * Prototype generative-AI features for fan engagement, in-stadium experiences and operations
+
+4. **Highlighted Projects**
+
+   * **Chat-Completion Endpoints:** fine-tuned LLMs for live FAQ/chatbot
+   * **Embedding API Service:** deployed scalable vector embeddings for recommendation features
+   * **Policy-Optimization Pipeline:** AI rule-analysis on Panorama logs with auto-reporting
+   * **Fan-Engagement Prototype:** simple recommendation engine for ticket upsell
+
+5. **Tools & Technologies**
+
+   * **Cloud & MLOps:** Azure AI Foundry, Databricks, Docker, Git
+   * **ML Frameworks:** PyTorch, TensorFlow, Hugging Face Transformers
+   * **Languages & Scripting:** Python, Bash, PowerShell
+   * **Collaboration:** Microsoft Teams, Outlook, GitHub
+
+6. **Skills & Expertise**
+
+   * LLM deployment & governance
+   * Prompt engineering & PEFT
+   * Data-pipeline automation
+   * Transactional log analysis with AI
+   * Cross-functional sprint demos & technical write-ups
+
+7. **Impact & Outcomes**
+
+   * Automated routine model-training and reporting tasks, cutting manual effort 
+   * Reduced policy-review time through AI-driven log summaries and alerts
+   * Accelerated experimentation cycle with CI/CD for prompt and model evaluations
+
