@@ -4,14 +4,13 @@
 A professional portfolio website showcasing Isaias Perez's journey as an AI Engineer and Quantitative Researcher. The site highlights his current work at Polylabs, research at CU Boulder, academic achievements, and advanced projects in machine learning and quantitative finance.
 
 ## Recent Changes (January 2025)
-- **NEW: KSE Position Added**: AI Specialist Intern at Kroenke Sports & Entertainment (July 2025 - Present)
-- **Portfolio Overhaul**: Updated with latest resume featuring AI Engineer position at Polylabs
-- **New Projects Added**: FlowExec++ (RL trading system), PulsePlan (AI scheduler), enhanced EcoVision
-- **Enhanced Visual Effects**: Added floating AI icons, improved animations, gradient backgrounds
-- **Skills Section Updated**: Added Cloud & MLOps category with Azure AI Foundry, Databricks
-- **Experience Section**: Added KSE AI Specialist role with Azure, MLOps, and fan-engagement focus
-- **Responsive Design**: Improved grid layouts for projects (3-column) and skills sections
-- **Technical Stack Enhanced**: Added Azure AI Foundry, Databricks, PowerShell, advanced MLOps
+- **LATEST UPDATE**: Portfolio updated with 2025 resume containing quantitative metrics across all experiences
+- **CU Quant Club Prominence**: Added dedicated experience entry highlighting Lead Quant Developer role with mentorship stats
+- **Quantitative Metrics Added**: All experience entries now include specific performance metrics and impact numbers
+- **New 3D Visual**: Added floating 3D cube with rotating tech stack icons in bottom-right corner
+- **Updated Logos**: Polylabs logo updated with new brand design, CU Quant logo added
+- **Enhanced About Section**: Updated description with quantitative achievements and CU Quant leadership details
+- **Resume Integration**: Latest technical resume PDF uploaded with all current metrics and accomplishments
 
 ## Project Architecture
 ### Frontend (React + TypeScript)

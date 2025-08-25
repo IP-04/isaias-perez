@@ -51,14 +51,14 @@ export default function About() {
                 <p className="text-gray-300">BS in Computer Science (Expected May 2027)</p>
                 <p className="text-sm text-gray-400 mb-2">Double Minor: Business and Applied Mathematics</p>
                 <div className="text-sm text-gray-400">
-                  <p><span className="text-white font-medium">Courses:</span> Data Structures, AI, OOP, Databases, Software Engineering, Finance</p>
-                  <p><span className="text-white font-medium">Affiliations:</span> Society of Hispanic Professional Engineers (SHPE)</p>
+                  <p><span className="text-white font-medium">Courses:</span> Data Structures & Algorithms, AI, Databases, Software Engineering, Applied ML, Finance</p>
+                  <p><span className="text-white font-medium">Affiliations:</span> CU Quant Club (Lead Quant Developer), Society of Hispanic Professional Engineers (SHPE)</p>
                 </div>
               </div>
             </div>
             
             <p className="mb-6 text-lg text-gray-300">
-              I'm a passionate Computer Science student with a focus on machine learning and software engineering. Currently researching LLM interpretability at CU Boulder, I'm dedicated to developing innovative technological solutions.
+              Computer Science student with internships in AI/ML, software engineering, and quantitative research. Lead Quant Developer for CU Quant Club, mentoring peers and directing strategy development. Deployed ML models with 25% faster inference and engineered trading systems achieving 10× throughput.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -89,9 +89,9 @@ export default function About() {
               <div className="bg-black rounded-lg p-4 shadow-md shadow-purple-500/10 border border-purple-900/50">
                 <div className="flex items-center mb-2">
                   <FaUsers className="text-[#9d4edd] mr-2" />
-                  <h4 className="font-semibold text-white">Leadership</h4>
+                  <h4 className="font-semibold text-white">Leadership & Quant Research</h4>
                 </div>
-                <p className="text-gray-300">Active member of SHPE, promoting diversity and engagement within the engineering community.</p>
+                <p className="text-gray-300">Lead Quant Developer at CU Quant Club, mentoring members and building trading systems. Active in SHPE promoting diversity in engineering.</p>
               </div>
             </div>
             
