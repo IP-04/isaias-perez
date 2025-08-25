@@ -53,7 +53,7 @@ export default function Experience() {
     {
       title: "Lead Quant Developer",
       company: "CU Quant Club",
-      period: "September 2023 – Present",
+      period: "August 2025 – Present",
       icon: <FaMicroscope />,
       logo: "/assets/cuquants_logo.jpg",
       responsibilities: [

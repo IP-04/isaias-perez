@@ -3,19 +3,15 @@ import { FaPython, FaReact, FaNodeJs, FaBrain } from "react-icons/fa";
 import { SiOpenai, SiPytorch, SiTensorflow, SiCplusplus } from "react-icons/si";
 
 export default function FloatingCube() {
-  const cubeIcons = [
-    { icon: <SiOpenai className="text-green-400" />, face: "front" },
-    { icon: <SiPytorch className="text-red-500" />, face: "back" },
-    { icon: <FaPython className="text-blue-400" />, face: "right" },
-    { icon: <SiCplusplus className="text-blue-500" />, face: "left" },
-    { icon: <FaReact className="text-cyan-400" />, face: "top" },
-    { icon: <SiTensorflow className="text-orange-500" />, face: "bottom" },
-  ];
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="fixed bottom-10 right-10 z-50 hidden md:block">
       <motion.div
-        className="relative w-20 h-20 perspective-1000"
+        className="relative w-20 h-20 cursor-pointer"
+        style={{ perspective: "1000px" }}
         animate={{ 
           rotateX: [0, 360],
           rotateY: [0, 360] 
@@ -29,36 +25,58 @@ export default function FloatingCube() {
           scale: 1.2,
           transition: { duration: 0.3 }
         }}
+        onClick={scrollToTop}
       >
         {/* Cube Container */}
-        <div className="relative w-full h-full transform-style-preserve-3d">
+        <div 
+          className="relative w-full h-full"
+          style={{ transformStyle: "preserve-3d" }}
+        >
           {/* Front Face */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#9d4edd]/80 to-purple-700/80 border border-purple-500/50 flex items-center justify-center text-2xl backdrop-blur-sm rounded-lg transform translateZ-10">
+          <div 
+            className="absolute inset-0 bg-gradient-to-br from-[#9d4edd]/80 to-purple-700/80 border border-purple-500/50 flex items-center justify-center text-2xl backdrop-blur-sm rounded-lg"
+            style={{ transform: "translateZ(40px)" }}
+          >
             <SiOpenai className="text-green-400" />
           </div>
           
           {/* Back Face */}
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-700/80 to-[#9d4edd]/80 border border-purple-500/50 flex items-center justify-center text-2xl backdrop-blur-sm rounded-lg transform rotateY-180 translateZ-10">
+          <div 
+            className="absolute inset-0 bg-gradient-to-br from-purple-700/80 to-[#9d4edd]/80 border border-purple-500/50 flex items-center justify-center text-2xl backdrop-blur-sm rounded-lg"
+            style={{ transform: "rotateY(180deg) translateZ(40px)" }}
+          >
             <SiPytorch className="text-red-500" />
           </div>
           
           {/* Right Face */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/80 to-purple-600/80 border border-purple-500/50 flex items-center justify-center text-2xl backdrop-blur-sm rounded-lg transform rotateY-90 translateZ-10">
+          <div 
+            className="absolute inset-0 bg-gradient-to-br from-blue-600/80 to-purple-600/80 border border-purple-500/50 flex items-center justify-center text-2xl backdrop-blur-sm rounded-lg"
+            style={{ transform: "rotateY(90deg) translateZ(40px)" }}
+          >
             <FaPython className="text-blue-400" />
           </div>
           
           {/* Left Face */}
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/80 to-blue-600/80 border border-purple-500/50 flex items-center justify-center text-2xl backdrop-blur-sm rounded-lg transform rotateY-(-90) translateZ-10">
+          <div 
+            className="absolute inset-0 bg-gradient-to-br from-purple-600/80 to-blue-600/80 border border-purple-500/50 flex items-center justify-center text-2xl backdrop-blur-sm rounded-lg"
+            style={{ transform: "rotateY(-90deg) translateZ(40px)" }}
+          >
             <SiCplusplus className="text-blue-500" />
           </div>
           
           {/* Top Face */}
-          <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/80 to-blue-500/80 border border-purple-500/50 flex items-center justify-center text-2xl backdrop-blur-sm rounded-lg transform rotateX-90 translateZ-10">
+          <div 
+            className="absolute inset-0 bg-gradient-to-br from-cyan-500/80 to-blue-500/80 border border-purple-500/50 flex items-center justify-center text-2xl backdrop-blur-sm rounded-lg"
+            style={{ transform: "rotateX(90deg) translateZ(40px)" }}
+          >
             <FaReact className="text-cyan-400" />
           </div>
           
           {/* Bottom Face */}
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/80 to-red-500/80 border border-purple-500/50 flex items-center justify-center text-2xl backdrop-blur-sm rounded-lg transform rotateX-(-90) translateZ-10">
+          <div 
+            className="absolute inset-0 bg-gradient-to-br from-orange-500/80 to-red-500/80 border border-purple-500/50 flex items-center justify-center text-2xl backdrop-blur-sm rounded-lg"
+            style={{ transform: "rotateX(-90deg) translateZ(40px)" }}
+          >
             <SiTensorflow className="text-orange-500" />
           </div>
         </div>
