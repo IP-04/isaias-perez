@@ -18,7 +18,9 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
-import { SiApple } from "react-icons/si";
+import { SiApple, SiClaude, SiCplusplus, SiDatabricks, SiDocker, SiFastapi, SiKubernetes, SiLinux, SiNvidia, SiOpenai, SiPostgresql, SiPython, SiPytorch, SiRedis, SiSwift, SiTypescript } from "react-icons/si";
+import { VscAzure } from "react-icons/vsc";
+import type { IconType } from "react-icons";
 
 const email = "isaiasxl21@gmail.com";
 const assetBase = import.meta.env.BASE_URL;
@@ -136,12 +138,48 @@ const projects = [
   },
 ];
 
-const capabilities = [
-  ["Systems & performance", "C/C++, CUDA, Swift, concurrency, profiling, crash and fault analysis"],
-  ["AI & evaluation", "Python, PyTorch, RAG, agent workflows, evaluation, vector search, forecasting"],
-  ["Data & cloud", "SQL, PySpark, Databricks, Azure ML, FastAPI, PostgreSQL, Redis"],
-  ["Shipping products", "TypeScript, Docker, Kubernetes, MCP, APIs, retrieval, technical discovery"],
+const technologies: Record<string, { name: string; icon: IconType; color: string; detail: string }> = {
+  cpp: { name: "C++", icon: SiCplusplus, color: "#78b8f3", detail: "Systems & performance" },
+  swift: { name: "Swift", icon: SiSwift, color: "#ff916b", detail: "Native developer tooling" },
+  python: { name: "Python", icon: SiPython, color: "#f5d46f", detail: "ML & data workflows" },
+  typescript: { name: "TypeScript", icon: SiTypescript, color: "#70b7ff", detail: "Typed product interfaces" },
+  pytorch: { name: "PyTorch", icon: SiPytorch, color: "#ff8d78", detail: "Models & experiments" },
+  cuda: { name: "CUDA", icon: SiNvidia, color: "#a7d86b", detail: "GPU acceleration" },
+  fastapi: { name: "FastAPI", icon: SiFastapi, color: "#67d6bf", detail: "Model-serving APIs" },
+  sql: { name: "SQL / PostgreSQL", icon: SiPostgresql, color: "#8bbce4", detail: "Queries & relational data" },
+  databricks: { name: "Databricks", icon: SiDatabricks, color: "#ff8f83", detail: "Distributed data pipelines" },
+  azure: { name: "Azure", icon: VscAzure, color: "#65beff", detail: "Cloud & machine learning" },
+  redis: { name: "Redis", icon: SiRedis, color: "#ff8c8c", detail: "Caching & fast state" },
+  docker: { name: "Docker", icon: SiDocker, color: "#71bcff", detail: "Reproducible containers" },
+  kubernetes: { name: "Kubernetes", icon: SiKubernetes, color: "#8ba9ff", detail: "Container orchestration" },
+  linux: { name: "Linux", icon: SiLinux, color: "#f1d780", detail: "Runtime & systems tooling" },
+};
+
+const toolboxGroups = [
+  { title: "Languages", subtitle: "From low-level reliability to the interface.", tools: ["cpp", "swift", "python", "typescript"] },
+  { title: "AI & performance", subtitle: "Train, evaluate, accelerate, and serve.", tools: ["pytorch", "cuda", "fastapi"] },
+  { title: "Data & cloud", subtitle: "Turn raw inputs into dependable systems.", tools: ["sql", "databricks", "azure", "redis"] },
+  { title: "Deployment", subtitle: "Package it. Ship it. Keep it running.", tools: ["docker", "kubernetes", "linux"] },
 ];
+
+const codingAgents = [
+  { name: "Codex", provider: "OpenAI", icon: SiOpenai, color: "#d8c4ff", description: "OpenAI’s coding agent for writing features, debugging, running tests, and reviewing code.", href: "https://developers.openai.com/api/docs/guides/code-generation" },
+  { name: "Claude Code", provider: "Anthropic", icon: SiClaude, color: "#e9aa8f", description: "Anthropic’s coding agent for exploring a codebase, editing files, running commands, and connecting development tools.", href: "https://code.claude.com/docs/en/overview" },
+];
+
+function TechnologyBadge({ id, compact = false }: { id: string; compact?: boolean }) {
+  const tool = technologies[id];
+  const Icon = tool.icon;
+  return <span className={compact ? "technology-chip" : "technology-tile"}>
+    <span className="technology-icon" style={{ color: tool.color }}><Icon aria-hidden="true" /></span>
+    <span className="technology-label">{tool.name}{!compact && <small>{tool.detail}</small>}</span>
+  </span>;
+}
+
+function ProjectTechnologies({ title }: { title: string }) {
+  const tools = title === "FlowExec++" ? ["cpp", "cuda", "pytorch"] : title === "CoverEngine" ? ["python", "pytorch"] : ["python", "typescript", "sql"];
+  return <div className="project-technologies" aria-label={`${title} technologies`}>{tools.map(id => <TechnologyBadge key={id} id={id} compact />)}</div>;
+}
 
 function scrollTo(id: string) {
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -250,7 +288,7 @@ export default function Portfolio() {
         }
       });
     }, { threshold: .12 });
-    shell.current?.querySelectorAll(".section-heading, .work-item, .field-card, .capability").forEach(element => observer.observe(element));
+    shell.current?.querySelectorAll(".section-heading, .work-item, .field-card, .toolbox-group, .coding-agent").forEach(element => observer.observe(element));
     return () => observer.disconnect();
   }, [motionPaused]);
 
@@ -334,7 +372,7 @@ export default function Portfolio() {
         <section id="projects" className="section projects-section">
           <div className="section-heading split"><div><p className="section-index">02 / Projects</p><h2>Technical depth, made visible.</h2></div><p>Selected work across simulation, forecasting, and applied operational intelligence.</p></div>
           <div className="project-grid">
-            {projects.map((project) => { const Icon = project.icon; return <a className="project-card" onPointerMove={tiltCard} onPointerLeave={resetTilt} key={project.title} href={project.href} target="_blank" rel="noreferrer"><ProjectVisual visual={project.visual} title={project.title} /><div className="project-body"><div className="project-top"><span className="project-icon"><Icon size={22} /></span><ExternalLink size={18} /></div><p className="project-label">{project.label}</p><h3>{project.title}</h3><p className="project-copy">{project.copy}</p><div className="project-bottom"><span>{project.result}</span><span>{project.stack}</span></div></div></a>; })}
+            {projects.map((project) => { const Icon = project.icon; return <a className="project-card" onPointerMove={tiltCard} onPointerLeave={resetTilt} key={project.title} href={project.href} target="_blank" rel="noreferrer"><ProjectVisual visual={project.visual} title={project.title} /><div className="project-body"><div className="project-top"><span className="project-icon"><Icon size={22} /></span><ExternalLink size={18} /></div><p className="project-label">{project.label}</p><h3>{project.title}</h3><p className="project-copy">{project.copy}</p><ProjectTechnologies title={project.title} /><div className="project-bottom"><span>{project.result}</span><span>{project.stack}</span></div></div></a>; })}
           </div>
           <a className="text-link" href="https://github.com/IP-04" target="_blank" rel="noreferrer">More work on GitHub <ArrowUpRight size={17} /></a>
         </section>
@@ -352,7 +390,9 @@ export default function Portfolio() {
 
         <section id="toolbox" className="section toolbox-section">
           <div className="section-heading"><p className="section-index">03 / Toolbox</p><h2>A systems-minded stack.</h2><p>I choose tools for the constraint in front of me, from a C crash sentinel to a retrieval evaluation harness.</p></div>
-          <div className="capability-grid">{capabilities.map(([title, items], index) => <article className="capability" key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{items}</p></article>)}</div>
+          <div className="toolbox-groups">{toolboxGroups.map((group, index) => <article className="toolbox-group" key={group.title}><div className="toolbox-group-heading"><span>0{index + 1}</span><h3>{group.title}</h3></div><p>{group.subtitle}</p><div className="technology-grid">{group.tools.map(id => <TechnologyBadge id={id} key={id} />)}</div></article>)}</div>
+          <div className="coding-tools-heading"><div><p className="section-index">AI-assisted development</p><h3>Another pair of eyes. More room to build.</h3></div><p>Coding agents alongside the stack—not a substitute for testing, review, or engineering judgment.</p></div>
+          <div className="coding-agents">{codingAgents.map(agent => { const Icon = agent.icon; return <a className="coding-agent" href={agent.href} target="_blank" rel="noreferrer" key={agent.name}><span className="coding-agent-logo" style={{ color: agent.color }}><Icon aria-hidden="true" /></span><div><p className="agent-provider">{agent.provider}</p><h4>{agent.name}</h4><p>{agent.description}</p><span className="agent-docs">Explore the tool <ArrowUpRight size={15} /></span></div></a>; })}</div>
         </section>
 
         <section id="about" className="section about-section">
