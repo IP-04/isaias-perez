@@ -1,10 +1,8 @@
 import {
   ArrowDownRight,
   ArrowUpRight,
-  Braces,
   CheckCircle2,
   ChevronRight,
-  Code2,
   Database,
   ExternalLink,
   Github,
@@ -18,11 +16,20 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { SiApple } from "react-icons/si";
 
 const email = "isaiasxl21@gmail.com";
 const assetBase = import.meta.env.BASE_URL;
 const resume = `${assetBase}assets/Isaias-Perez-Startup-FDE-2026-10-04.pdf`;
 const portrait = `${assetBase}assets/Senior%20Picture%20Isaias%20Perez.JPG`;
+const assets = {
+  sinequa: `${assetBase}assets/sinequa-logo.svg`,
+  culinary: `${assetBase}assets/culinary-os-logo.svg`,
+  kse: `${assetBase}assets/kse_logo.jpg`,
+  cu: `${assetBase}assets/CU-Boulder-Buffalo-logo.avif`,
+  coverengine: `${assetBase}assets/coverengine-diagnostics.png`,
+  architecture: `${assetBase}assets/culinaryos-architecture.jpg`,
+};
 
 const nav = [
   ["Work", "work"],
@@ -38,6 +45,7 @@ const work = [
     company: "Sinequa · ChapsVision",
     place: "Remote",
     accent: "Deployment",
+    logo: "sinequa",
     description:
       "Building practical, evidence-grounded enterprise search experiences for presales teams.",
     highlights: [
@@ -51,6 +59,7 @@ const work = [
     company: "Apple · Apple TV / Services Engineering",
     place: "Seattle, WA",
     accent: "Systems",
+    logo: "apple",
     description:
       "Worked on engineering tooling at the intersection of agent recovery, developer experience, and low-level reliability.",
     highlights: [
@@ -64,6 +73,7 @@ const work = [
     company: "CulinaryOS",
     place: "Boulder, CO",
     accent: "Applied AI",
+    logo: "culinary",
     description:
       "Led an agentic operational-intelligence platform for restaurant workflows across forecasting, staffing, reservations, and POS data.",
     highlights: [
@@ -77,6 +87,7 @@ const work = [
     company: "Kroenke Sports & Entertainment",
     place: "Denver, CO",
     accent: "Data systems",
+    logo: "kse",
     description:
       "Developed data and machine-learning workflows in a production-minded sports and entertainment environment.",
     highlights: [
@@ -94,6 +105,7 @@ const projects = [
     result: "10× simulation throughput",
     href: "https://github.com/IP-04/FlowExec-",
     icon: Terminal,
+    visual: "telemetry",
   },
   {
     title: "CoverEngine",
@@ -103,6 +115,7 @@ const projects = [
     result: "Public technical showcase",
     href: "https://github.com/IP-04/coverengine-ml-showcase",
     icon: Database,
+    visual: assets.coverengine,
   },
   {
     title: "CulinaryOS",
@@ -112,6 +125,7 @@ const projects = [
     result: "4 pilot restaurants",
     href: "https://github.com/IP-04/CulinaryOS",
     icon: Sparkles,
+    visual: assets.architecture,
   },
 ];
 
@@ -124,6 +138,43 @@ const capabilities = [
 
 function scrollTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function CompanyLogo({ name }: { name: string }) {
+  if (name === "apple") {
+    return <span className="company-logo apple-logo" aria-label="Apple"><SiApple /></span>;
+  }
+  const src = name === "sinequa" ? assets.sinequa : name === "culinary" ? assets.culinary : assets.kse;
+  const label = name === "sinequa" ? "Sinequa" : name === "culinary" ? "CulinaryOS" : "Kroenke Sports & Entertainment";
+  return <span className={`company-logo ${name}-logo`}><img src={src} alt={`${label} logo`} /></span>;
+}
+
+function DimensionCube() {
+  return <div className="dimension-scene" aria-hidden="true">
+    <div className="dimension-orbit orbit-a"><span>AI</span></div>
+    <div className="dimension-orbit orbit-b"><span>01</span></div>
+    <div className="dimension-cube">
+      <div className="cube-face cube-front">AI</div><div className="cube-face cube-back">C++</div>
+      <div className="cube-face cube-right">RAG</div><div className="cube-face cube-left">ML</div>
+      <div className="cube-face cube-top">SWIFT</div><div className="cube-face cube-bottom">CUDA</div>
+    </div>
+  </div>;
+}
+
+function ProjectVisual({ visual, title }: { visual: string; title: string }) {
+  if (visual === "telemetry") {
+    return <div className="project-visual telemetry-visual" aria-label="FlowExec simulation telemetry illustration">
+      <div className="telemetry-header"><span>SIM / LIVE</span><i /></div>
+      <svg viewBox="0 0 420 150" role="img" aria-label="Animated execution simulation graph">
+        <defs><linearGradient id="trace" x1="0" x2="1"><stop stopColor="#6d28d9"/><stop offset="1" stopColor="#d8b4fe"/></linearGradient></defs>
+        <path className="trace-grid" d="M0 30H420M0 75H420M0 120H420M70 0V150M140 0V150M210 0V150M280 0V150M350 0V150" />
+        <path className="trace-line" d="M0 118 C30 116 38 93 62 98 S91 120 119 82 S156 58 179 70 S206 106 235 62 S270 25 294 51 S325 90 350 46 S389 32 420 18" />
+        <circle className="trace-dot" cx="350" cy="46" r="5" />
+      </svg>
+      <div className="telemetry-stats"><span>10×<small>throughput</small></span><span>GPU<small>accelerated</small></span><span>7%<small>less slippage</small></span></div>
+    </div>;
+  }
+  return <div className="project-visual image-visual"><img src={visual} alt={`${title} project artifact`} /><span>Real project artifact</span></div>;
 }
 
 export default function Portfolio() {
@@ -162,6 +213,7 @@ export default function Portfolio() {
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-grid" aria-hidden="true" />
           <div className="orb orb-one" aria-hidden="true" /><div className="orb orb-two" aria-hidden="true" />
+          <DimensionCube />
           <div className="hero-content">
             <div className="hero-intro reveal">
               <p className="eyebrow"><span /> Software engineer · Forward deployment</p>
@@ -193,12 +245,24 @@ export default function Portfolio() {
           <span>Retrieval systems</span><i>✦</i><span>Applied AI</span><i>✦</i><span>Developer tooling</span><i>✦</i><span>High-performance computing</span>
         </section>
 
+        <section className="logo-marquee" aria-label="Organizations and teams">
+          <div className="logo-track">
+            {[0, 1].map((copy) => <div className="logo-set" aria-hidden={copy === 1} key={copy}>
+              <div className="logo-tile sinequa-tile"><img src={assets.sinequa} alt={copy ? "" : "Sinequa"} /></div>
+              <div className="logo-tile apple-tile"><SiApple /><span>Apple TV</span></div>
+              <div className="logo-tile culinary-tile"><img src={assets.culinary} alt={copy ? "" : "CulinaryOS"} /></div>
+              <div className="logo-tile kse-tile"><img src={assets.kse} alt={copy ? "" : "Kroenke Sports & Entertainment"} /></div>
+              <div className="logo-tile cu-tile"><img src={assets.cu} alt={copy ? "" : "University of Colorado Boulder"} /><span>CU Boulder</span></div>
+            </div>)}
+          </div>
+        </section>
+
         <section id="work" className="section work-section">
           <div className="section-heading"><p className="section-index">01 / Selected work</p><h2>Built close to the problem.</h2><p>I like the work where implementation, technical judgment, and real-world constraints meet.</p></div>
           <div className="work-list">
             {work.map((item, index) => <article className="work-item" key={item.company}>
               <div className="work-number">0{index + 1}</div>
-              <div className="work-main"><div className="work-heading"><div><p className="work-accent">{item.accent}</p><h3>{item.role}</h3><p className="company">{item.company}</p></div><div className="work-details"><span>{item.period}</span><span>{item.place}</span></div></div><p className="work-description">{item.description}</p><ul>{item.highlights.map((highlight) => <li key={highlight}><ChevronRight size={16} />{highlight}</li>)}</ul></div>
+              <div className="work-main"><div className="work-heading"><div className="work-identity"><CompanyLogo name={item.logo} /><div><p className="work-accent">{item.accent}</p><h3>{item.role}</h3><p className="company">{item.company}</p></div></div><div className="work-details"><span>{item.period}</span><span>{item.place}</span></div></div><p className="work-description">{item.description}</p><ul>{item.highlights.map((highlight) => <li key={highlight}><ChevronRight size={16} />{highlight}</li>)}</ul></div>
             </article>)}
           </div>
         </section>
@@ -206,9 +270,18 @@ export default function Portfolio() {
         <section id="projects" className="section projects-section">
           <div className="section-heading split"><div><p className="section-index">02 / Projects</p><h2>Technical depth, made visible.</h2></div><p>Selected work across simulation, forecasting, and applied operational intelligence.</p></div>
           <div className="project-grid">
-            {projects.map((project) => { const Icon = project.icon; return <a className="project-card" key={project.title} href={project.href} target="_blank" rel="noreferrer"><div className="project-top"><span className="project-icon"><Icon size={22} /></span><ExternalLink size={18} /></div><p className="project-label">{project.label}</p><h3>{project.title}</h3><p className="project-copy">{project.copy}</p><div className="project-bottom"><span>{project.result}</span><span>{project.stack}</span></div></a>; })}
+            {projects.map((project) => { const Icon = project.icon; return <a className="project-card" key={project.title} href={project.href} target="_blank" rel="noreferrer"><ProjectVisual visual={project.visual} title={project.title} /><div className="project-body"><div className="project-top"><span className="project-icon"><Icon size={22} /></span><ExternalLink size={18} /></div><p className="project-label">{project.label}</p><h3>{project.title}</h3><p className="project-copy">{project.copy}</p><div className="project-bottom"><span>{project.result}</span><span>{project.stack}</span></div></div></a>; })}
           </div>
           <a className="text-link" href="https://github.com/IP-04" target="_blank" rel="noreferrer">More work on GitHub <ArrowUpRight size={17} /></a>
+        </section>
+
+        <section className="section visual-story" aria-labelledby="visual-story-title">
+          <div className="section-heading"><p className="section-index">Field notes / Process</p><h2 id="visual-story-title">The person behind the systems.</h2><p>From the first sketch to the shipped result: curious, hands-on, and always close to the evidence.</p></div>
+          <div className="portrait-gallery">
+            <figure className="portrait-panel portrait-panel-wide"><img src={portrait} alt="Isaias Perez outdoors in Colorado" /><figcaption><span>Based in Boulder</span><small>Engineer · Researcher · Builder</small></figcaption></figure>
+            <figure className="portrait-panel portrait-panel-detail"><img src={portrait} alt="Portrait detail of Isaias Perez" /><figcaption><span>Open to what’s next</span><small>Available June 2027</small></figcaption></figure>
+            <figure className="process-panel"><img src={assets.architecture} alt="Early CulinaryOS architecture notes in Isaias's engineering notebook" /><figcaption><span>Ideas start rough.</span><small>Then they get tested.</small></figcaption></figure>
+          </div>
         </section>
 
         <section id="toolbox" className="section toolbox-section">

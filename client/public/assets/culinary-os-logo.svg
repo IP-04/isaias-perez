@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 120" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <!-- Enhanced gradient from pure black to vibrant gold -->
+    <linearGradient id="wordGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="10%" style="stop-color:#1A1207;stop-opacity:1" />
+      <stop offset="20%" style="stop-color:#2D2110;stop-opacity:1" />
+      <stop offset="35%" style="stop-color:#4E3C14;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#6B4F1C;stop-opacity:1" />
+      <stop offset="65%" style="stop-color:#8E6D27;stop-opacity:1" />
+      <stop offset="80%" style="stop-color:#B08732;stop-opacity:1" />
+      <stop offset="90%" style="stop-color:#D4A93D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E8C04A;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main wordmark: culinaryos with proper letter spacing -->
+  <g>
+    <text x="15" y="62" 
+          font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" 
+          font-size="68" 
+          font-weight="400" 
+          fill="url(#wordGradient)" 
+          letter-spacing="1.5">cul<tspan>ı</tspan>naryos</text>
+  </g>
+  
+  <!-- Gold dot on the i (positioned correctly above the i stem) -->
+  <circle cx="113" cy="18" r="5.5" fill="#E8C04A"/>
+  
+  <!-- KITCHEN INTELLIGENCE subtitle -->
+  <text x="15" y="95" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="15" 
+        font-weight="500" 
+        letter-spacing="3.5" 
+        fill="#B08732">KITCHEN INTELLIGENCE</text>
+</svg>
