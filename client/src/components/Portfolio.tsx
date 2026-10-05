@@ -17,7 +17,7 @@ import {
   Terminal,
   X,
 } from "lucide-react";
-import { useEffect, useRef, useState, type PointerEvent } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type PointerEvent } from "react";
 import { SiApple, SiClaude, SiCplusplus, SiDatabricks, SiDocker, SiFastapi, SiKubernetes, SiLinux, SiNvidia, SiOpenai, SiPostgresql, SiPython, SiPytorch, SiRedis, SiSwift, SiTypescript } from "react-icons/si";
 import { VscAzure } from "react-icons/vsc";
 import type { IconType } from "react-icons";
@@ -166,6 +166,37 @@ const codingAgents = [
   { name: "Codex", provider: "OpenAI", icon: SiOpenai, color: "#d8c4ff", description: "OpenAI’s coding agent for writing features, debugging, running tests, and reviewing code.", href: "https://developers.openai.com/api/docs/guides/code-generation" },
   { name: "Claude Code", provider: "Anthropic", icon: SiClaude, color: "#e9aa8f", description: "Anthropic’s coding agent for exploring a codebase, editing files, running commands, and connecting development tools.", href: "https://code.claude.com/docs/en/overview" },
 ];
+
+const portraitLogos = [
+  { name: "Apple", icon: SiApple, color: "#f4eaff" },
+  { name: "Claude", icon: SiClaude, color: "#e9aa8f" },
+  technologies.swift, technologies.docker, technologies.kubernetes,
+  technologies.linux, technologies.fastapi, technologies.sql,
+  technologies.python, technologies.cuda, technologies.redis,
+  technologies.cpp, technologies.azure, technologies.databricks,
+  technologies.typescript, technologies.pytorch,
+  { name: "OpenAI / Codex", icon: SiOpenai, color: "#d8c4ff" },
+];
+
+function FloatingPortraitLogos() {
+  return <div className="portrait-constellation" aria-hidden="true">
+    <div className="portrait-orbit-line" />
+    {portraitLogos.map((logo, index) => {
+      const angle = (index / portraitLogos.length) * Math.PI * 2 - Math.PI / 2;
+      const Icon = logo.icon;
+      const style = {
+        left: `${50 + Math.cos(angle) * 47}%`,
+        top: `${50 + Math.sin(angle) * 47}%`,
+        "--logo-color": logo.color,
+        "--float-duration": `${5 + (index % 5) * .7}s`,
+        "--float-delay": `${index * -.63}s`,
+      } as CSSProperties;
+      return <span className="portrait-logo-position" style={style} key={logo.name} title={logo.name}>
+        <span className="portrait-floating-logo"><Icon /></span>
+      </span>;
+    })}
+  </div>;
+}
 
 function TechnologyBadge({ id, compact = false }: { id: string; compact?: boolean }) {
   const tool = technologies[id];
@@ -341,7 +372,10 @@ export default function Portfolio() {
               </div>
             </div>
             <aside className="hero-proof reveal-delay" aria-label="Current focus">
-              <div className="portrait-wrap"><img src={portrait} width={910} height={1200} alt="Isaias Perez" /></div>
+              <div className="portrait-stage">
+                <FloatingPortraitLogos />
+                <div className="portrait-photo-position"><div className="portrait-wrap"><img src={portrait} width={910} height={1200} alt="Isaias Perez" /></div></div>
+              </div>
               <div className="proof-card">
                 <p className="proof-label">Current focus</p>
                 <p>Forward deployment at the boundary of <strong>enterprise search, agent evaluation, and systems engineering.</strong></p>
